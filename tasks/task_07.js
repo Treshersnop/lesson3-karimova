@@ -7,83 +7,25 @@
 // runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
 //  // => [[34,'a'], [3,'b']]
 function runLengthEncoding(str) {
-    return []
+  let chars = str.split('');
+  let count_chars = []
+  while (chars.length > 0)
+  {
+    let char = chars.shift();
+    if (count_chars.length == 0)
+    {
+      count_chars.push([1, char]);
+    }
+    else if (count_chars[count_chars.length - 1][1] == char)
+    {
+      count_chars[count_chars.length - 1][0] += 1;
+    }
+    else 
+    {
+      count_chars.push([1, char]);
+    }
+  }
+  return count_chars;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = runLengthEncoding

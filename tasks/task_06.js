@@ -6,84 +6,30 @@
 Note: оценки всегда будут уникальными (поэтому никаких повторяющихся значений) */
 
 function myLanguages(results) {
-
+  let big_mark = [];
+  let only_marks = [];
+  for (let key in results)
+  {
+    only_marks.push(results[key]);
+  }
+  only_marks.sort((a, b) => b - a);
+  while (true)
+  {
+    if ((only_marks.length > 0) && (only_marks[0] >= 60))
+    {
+       for (key in results)
+       {
+        if (results[key] == only_marks[0])
+        {
+          big_mark.push(key);
+          only_marks.shift();
+          break;
+        }
+       }
+    }
+    else return big_mark
+  }
+  
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = myLanguages
-

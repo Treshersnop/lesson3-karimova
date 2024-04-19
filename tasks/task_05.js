@@ -3,47 +3,11 @@
 * */
 
 function abs(array) {
+    let sum = 0;
+    array.forEach(item => sum += item);
 
+    sum = Math.round(sum / array.length * 10);
+    return sum / 10
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = abs

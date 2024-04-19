@@ -4,50 +4,9 @@
 * */
 
 function getVowelsCount(str) {
-
+    const regex = /[?(aeyuio)]/g;
+    const onlyVowels = str.match(regex) || [];
+    return onlyVowels.length;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = getVowelsCount

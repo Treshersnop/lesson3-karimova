@@ -12,51 +12,14 @@
 * */
 
 function fibonacci(num) {
-
+    const even_num = num % 2;
+    let fib_num = [0, 1]
+    while (num > 0)
+    {
+        fib_num[(num + 1) % 2] = fib_num[0] + fib_num[1];
+        num -= 1;
+    }
+    return fib_num[even_num]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = fibonacci

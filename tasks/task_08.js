@@ -35,122 +35,35 @@ A component will not appear at all if its value happens to be zero. Hence, 1 min
 *  Формально длительность, указанная в компоненте, не должна превышать любую допустимую более значимую единицу времени.
 *
 * * */
-function formatDuration (seconds) {
 
+function countSeconds (list_seconds){
+    const list_time = ['second', 'minute', 'hour', 'day', 'year'];
+    let right_list_time = []
+    
+    for (let time = 0; time < list_seconds.length; time++)
+    {
+        if (list_seconds[time] == 0) continue
+        else if (list_seconds[time] == 1) right_list_time.push(`${list_seconds[time]} ${list_time[time]}`)
+        else right_list_time.push(`${list_seconds[time]} ${list_time[time]}s`);
+    }
+
+    if (right_list_time.length == 1) return right_list_time[0]
+    else if (right_list_time.length == 0) return '';
+
+    right_list_time.reverse();
+    right_list_time.splice(-1, 0, 'and');
+    right_list_time.splice(-3, 3, right_list_time.slice(-3).join(' '));
+    return right_list_time.join(', ')
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function formatDuration (seconds) {
+    let new_seconds = seconds % 60;
+    let minutes = Math.trunc(seconds / 60) % 60;
+    let hours = Math.trunc(seconds / 3600) % 24;
+    let days = Math.trunc(seconds / 86400) % 365;
+    let years = Math.trunc(seconds / 31557600);
+
+    return countSeconds([new_seconds, minutes, hours, days, years])
+}
 
 module.exports = formatDuration
